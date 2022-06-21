@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="接口测试">    <!--suite（测试套件）为根路径，仅允许出现1次，是多个test（测试用例）的集合-->
+    <test name="cases">    <!--测试集-->
+        <classes>  <!--测试类组成的集合-->
+            <!--<class name="com.api.cases.RegisterCase"/> &lt;!&ndash;注册接口的测试用例&ndash;&gt;-->
+            <class name="com.api.cases.TestCase"/> <!--注册接口的测试用例-->
+            <!--<class name="com.api.cases.LoginCase"/> &lt;!&ndash;登录接口的测试用例&ndash;&gt;-->
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="com.api.export.ExtentTestNGIReporterListener"/>
+    </listeners>
+</suite>
