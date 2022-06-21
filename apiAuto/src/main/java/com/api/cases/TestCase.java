@@ -16,7 +16,7 @@ import java.util.Map;
 public class TestCase {
     @Test
     public static void test() {
-        String[] cellNames = {"CaseId", "Params"};
+        String[] cellNames = {"CaseId", "Params","ExpectedData"};
         List<Interfaces> interfacesList = InterfaceUtil.interfacesList;
         for (Interfaces ifs : interfacesList) {
             //从interface中获取apiId
