@@ -70,7 +70,8 @@ public class ExcelUtil {
      * @param sheetName sheet页签
      * @param classType 类型字节码
      */
-    public static <T> void load(String excelPath, String sheetName, Class<T> classType) {
+    public static <T> List<T> load(String excelPath, String sheetName, Class<T> classType) {
+        ArrayList<T> list = new ArrayList<T>();
         try {
             //创建一个workbook对象
             Workbook workbook = WorkbookFactory.create(new File(excelPath));
@@ -94,7 +95,7 @@ public class ExcelUtil {
             //循环取出每一行数据,除标题行外
             for (int i = 1; i <= lastRowIndex; i++) {
                 //创建实例对象
-                Object obj = classType.newInstance();
+                T obj = classType.newInstance();
                 Row dataRow = sheet.getRow(i);
                 if (dataRow == null || isEmptyRow(dataRow)) {
                     continue;
@@ -108,18 +109,13 @@ public class ExcelUtil {
                     Method method = classType.getMethod(methodName, String.class);
                     method.invoke(obj, value);
                 }
-                if (obj instanceof Case) {
-                    Case cs = (Case) obj;
-                    CaseUtil.cases.add(cs);
-                } else {
-                    Interfaces cs = (Interfaces) obj;
-                    InterfaceUtil.interfacesList.add(cs);
-                }
+                list.add(obj);
                 workbook.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return list;
     }
 
     private static boolean isEmptyRow(Row dataRow) {

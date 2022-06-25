@@ -3,10 +3,7 @@ package com.api.cases;
 
 import com.api.entity.Interfaces;
 import com.api.entity.WriteBackData;
-import com.api.utils.CaseUtil;
-import com.api.utils.ExcelUtil;
-import com.api.utils.HttpUtil;
-import com.api.utils.InterfaceUtil;
+import com.api.utils.*;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
@@ -32,9 +29,10 @@ public class TestCase {
                 //获取caseId
                 String caseId = (String) paramIndex[0];
                 Map<String, String> param = CaseUtil.getCaseDependDataByApiId(apiId,cellNames);
+                Map<String, String> newParam = ParameterUtil.replaceVariable(param);
                 System.out.println("map格式的字符串：" + param);
                 //调用接口,返回数据
-                String actualResponseData = HttpUtil.doService(url, type, param);
+                String actualResponseData = HttpUtil.doService(url, type, newParam);
                 String sheetName = "case";
                 WriteBackData backData = new WriteBackData(sheetName, caseId, "ActualData", actualResponseData);
                 //保存返回的数据对象
