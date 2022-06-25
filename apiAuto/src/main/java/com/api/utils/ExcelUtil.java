@@ -26,7 +26,7 @@ public class ExcelUtil {
     public static List<WriteBackData> backData = new ArrayList<WriteBackData>();
 
     static {
-        loadRowNumAndCellNum("D:\\javaApi\\apiAuto\\src\\main\\resources\\cases.xlsx", "case");
+        loadRowNumAndCellNum(PropertiesUtil.getExcelPath(), "case");
     }
 
     /**

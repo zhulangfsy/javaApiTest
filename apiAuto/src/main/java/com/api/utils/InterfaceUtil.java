@@ -12,7 +12,7 @@ public class InterfaceUtil {
     public static List<Interfaces> interfacesList = new ArrayList<Interfaces>();
 
     static {
-        List<Interfaces> interfaces=ExcelUtil.load("D:\\javaApi\\apiAuto\\src\\main\\resources\\cases.xlsx", "interface", Interfaces.class);
+        List<Interfaces> interfaces=ExcelUtil.load(PropertiesUtil.getExcelPath(), "interface", Interfaces.class);
         interfacesList.addAll(interfaces);
     }
 

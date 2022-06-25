@@ -15,7 +15,7 @@ public class CaseUtil {
 
     static {
         //将所有用例数据解析封装到cases
-        List<Case> list = ExcelUtil.load("D:\\javaApi\\apiAuto\\src\\main\\resources\\cases.xlsx", "case", Case.class);
+        List<Case> list = ExcelUtil.load(PropertiesUtil.getExcelPath(), "case", Case.class);
         cases.addAll(list);
     }
 

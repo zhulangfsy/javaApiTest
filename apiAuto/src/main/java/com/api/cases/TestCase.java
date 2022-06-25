@@ -43,7 +43,7 @@ public class TestCase {
 
     @AfterSuite
     public void batchWriteData() {
-        String excelPath = "D:\\javaApi\\apiAuto\\src\\main\\resources\\cases.xlsx";
+        String excelPath = PropertiesUtil.getExcelPath();
         ExcelUtil.batchWaiteBackData(excelPath);
     }
 }
